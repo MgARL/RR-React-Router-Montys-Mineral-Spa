@@ -1,18 +1,25 @@
-import { Link } from "react-router-dom"
+import Package from './Package'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Container from 'react-bootstrap/Container'
+import { Card } from "react-bootstrap"
 
 export default function Packages({ packages }) {
-    const displayPackages = packages.map((eachPackage, index) => <li><Link to={`/package/${index}`}>{eachPackage}</Link></li>)
+    const displayPackages = packages.map((eachPackage, index) => <ListGroup.Item key={index}><Package name={eachPackage}/></ListGroup.Item>)
 
     return (
-        <div>
-            <div className="packages">
-                <div className="packagesHeader">
-                    <h1>Our Packages</h1>
-                </div>
-                <ul>
+        <Container>
+            <Card>
+                <Card.Body>
+                    <Card.Title>Our Packages</Card.Title>
+                    <Card.Text>
+                        Check out some of our packages!
+                    </Card.Text>
+                </Card.Body>
+                <ListGroup>
                     {displayPackages}
-                </ul>
-            </div>
-        </div>
+                </ListGroup>
+            </Card>
+        </Container>
+        
     )
 }
